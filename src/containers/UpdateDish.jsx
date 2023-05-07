@@ -20,7 +20,6 @@ function UpdateDish() {
             alert("Please fill all the fields!!");
             return;
         }
-        const dishName = dishes.find(dish => dish.dishId == selectedDishId).dishName;
         const consent = window.confirm("Are you sure? \n" + dishName + " will be Updated!");
 
         if (consent == false)
