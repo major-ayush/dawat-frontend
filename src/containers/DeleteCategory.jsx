@@ -27,22 +27,17 @@ function DeleteCategory() {
             mode : 'cors'
         })
     }
-    return <div>
-        <form>
-            <fieldset>
-                <legend>
-                    Delete Category
-                </legend>
-                <select onChange={(event) => setSelectedCategoryId(event.target.value)}>
+    return <div className = "delete-category-container">
+                <h2>Delete Category</h2>
+                <select onChange={(event) => setSelectedCategoryId(event.target.value)} className = "classic">
                     <option hidden>Select a category</option>
                     {
                         categories.map(category => <option value={category.catId} key={category.catId}>{category.catName}</option>)
                     }
                 </select>
                 <br />
-                <button type="button" onClick={onClickHandeler}>Delete</button>
-            </fieldset>
-        </form>
+                <button type="button" onClick={onClickHandeler} className = "delete-category-btn">Delete</button>
+          
 
     </div>
 }

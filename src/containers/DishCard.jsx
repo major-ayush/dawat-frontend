@@ -7,10 +7,10 @@ function DishCard(props)
         <img src = {props.dishImage} alt = {props.dishName}
             className = "dish-card-img"
         />
-        <h2>{props.dishName}</h2>
-        <h3>Price : &#8377;{props.dishPrice}</h3>
-        <h3>{props.dishNature}</h3>
-        <p>{props.dishDescription}</p>
+        <h2 className = "dish-name">{props.dishName}</h2>
+        <h4 className = "dish-description">{props.dishDescription}</h4>
+        <h3 className = "dish-nature">{props.dishNature}</h3>
+        <h3 className = "dish-price">Price : &#8377;{props.dishPrice}</h3>
     </div>
 }
 

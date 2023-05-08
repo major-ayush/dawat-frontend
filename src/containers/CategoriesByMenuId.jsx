@@ -25,6 +25,8 @@ function CategoriesByMenuId(props)
         <button className = "go-to-menu-btn" onClick = {onClickHandeler}>Go to menu</button>
         {
             categories.length === 0 ? <h2 className = "categories-menu-no-cat">No Categories found</h2> :
+            <div className = "menu-cat-cards">
+            {
             categories.map(category => <CategoryCard
                 key = {category.catId}
                 catName = {category.catName}
@@ -32,6 +34,8 @@ function CategoriesByMenuId(props)
                 catId = {category.catId}
                 onClickBtn = {onGetDishClickHandler}
             />)
+            }
+            </div>
         }
     </div> : <ShowMenus/> : <DishesByCatId catId = {catId} menuId = {props.menuId}/>
 }

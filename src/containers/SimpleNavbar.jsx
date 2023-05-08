@@ -13,6 +13,10 @@ function SimpleNavbar()
         <button onClick = {() => navigate("/deleteCategory")}>Delete Category</button>
         <button onClick = {() => navigate("/deleteDish")}>Delete Dish</button>
         <button onClick = {() => navigate("/updateDish")}>Update Dish</button>
+        <button onClick = {() => {
+            sessionStorage.setItem("isVerified", false);
+            navigate("/login");
+        }}>Log out</button>
     </div>
 }
 

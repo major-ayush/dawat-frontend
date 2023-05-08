@@ -29,12 +29,16 @@ import ShowMenus from "./containers/ShowMenus";
 import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import SimpleNavbar from "./containers/SimpleNavbar";
 import UpdateDish from "./containers/UpdateDish";
+import MyNavbar from "./containers/MyNavbar";
+import NavScrollExample from "./containers/Navbar";
+import { Dropdown, DropdownButton } from "react-bootstrap";
+import DishByName from "./containers/DishByName";
+
 
 function App() {
 
-  const navigate = useNavigate();
-  localStorage.removeItem("isVerified")
-
+  
+  // To see if the user is verified
   function isVerified()
   {
     const info = sessionStorage.getItem("isVerified");
@@ -45,7 +49,8 @@ function App() {
     return false;
   }
 
-
+  // To handle click of login form button
+  const navigate = useNavigate();
   function onClickHandeler(userName, password) {
 
     if (userName === "") {
@@ -83,8 +88,7 @@ function App() {
 
 
 
-
-  // const data = useFetchAllDishes();
+  const data = useFetchAllDishes();
 
   // const menus = useFetchAllMenus();
 
@@ -97,7 +101,28 @@ function App() {
 
   return (
     <div className="App">
-      <h1 style={{ color: 'red', textAlign: "center", fontSize: "50px" }}>Dhaba-e-Ishq</h1>
+      
+      <NavScrollExample/>
+      <Routes>
+        <Route path="/" element={isVerified() ? <ShowMenus /> : <Navigate to = "/login"/>} exact />
+        <Route path="/login" element = {<Login onClickHandeler = {onClickHandeler}/>}/>
+        <Route path="/addCategory" element={isVerified() ? <AddCategory /> : <Navigate to = "/login"/>} />
+        <Route path="/addDish" element={isVerified() ? <AddDish /> : <Navigate to = "/login"/>} />
+        <Route path="/addMenu" element={isVerified() ? <AddMenu /> : <Navigate to = "/login"/>} />
+        <Route path="/deleteCategory" element={isVerified() ? <DeleteCategory /> : <Navigate to = "/login"/>} />
+        <Route path="/deleteDish" element={isVerified() ? <DeleteDish /> : <Navigate to = "/login"/>} />
+        <Route path="/updateDish" element={isVerified() ? <UpdateDish /> : <Navigate to = "/login"/>} />
+        <Route path="/dishByName" element={isVerified() ? <DishByName /> : <Navigate to = "/login"/>} />
+      </Routes>
+     
+    </div>
+  );
+}
+
+export default App;
+
+
+{/* <h1 style={{ color: 'red', textAlign: "center", fontSize: "50px" }}>Dhaba-e-Ishq</h1>
       <SimpleNavbar />
       <Routes>
         <Route path="/" element={isVerified() ? <ShowMenus /> : <Navigate to = "/login"/>} exact />
@@ -108,15 +133,7 @@ function App() {
         <Route path="/deleteCategory" element={isVerified() ? <DeleteCategory /> : <Navigate to = "/login"/>} />
         <Route path="/deleteDish" element={isVerified() ? <DeleteDish /> : <Navigate to = "/login"/>} />
         <Route path="/updateDish" element={isVerified() ? <UpdateDish /> : <Navigate to = "/login"/>} />
-      </Routes>
-
-    </div>
-  );
-}
-
-export default App;
-
-
+      </Routes> */}
 // login page component rendering
 // {
 //   isVerified === true ? <h1>You are at home page</h1> : isVerified === null ? <Login

@@ -14,7 +14,8 @@ function ShowMenus()
     return menuId === null ? <div className = "show-menus">
     {
         menus.length === 0 ? <h2 className = "show-menus-no-menu">No data found</h2> :
-        
+            <div className = "show-menu-container">
+            {
             menus.map(menu =>  <MenuCard
                 menuId = {menu.menuId}
                 menuName = {menu.menuName}
@@ -23,6 +24,8 @@ function ShowMenus()
                 onClickHandeler = {onClickHandeler}
             />
             )
+            }
+            </div>
 
         
     }

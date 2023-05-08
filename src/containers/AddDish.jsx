@@ -46,13 +46,9 @@ function AddDish()
         }
     }
 
-    return <div>
-        <form>
-            <fieldset>
-                <legend>
-                    Enter Dish
-                </legend>
-                <select onChange = {e => setSelectedCategoryId(e.target.value)}>
+    return <div className = "add-dish-container">
+                <h2>Add New Dish</h2>
+                <select onChange = {e => setSelectedCategoryId(e.target.value)} className="classic">
                     <option hidden>Choose a category</option>
                     {
                         categories.map(category => <option value = {category.catId} key = {category.catId}>{category.catName}</option>)
@@ -60,12 +56,14 @@ function AddDish()
                 </select>
                 <br/>
                 <input
+                className = "form-input"
                     placeholder="Enter Dish Name"
                     value = {dishName}
                     onChange = {(event) => setDishName(event.target.value)}
                 />
                 <br/>
                 <input
+                className = "form-input"
                     placeholder="Enter Dish Price"
                     value = {dishPrice}
                     onChange = {(event) => setDishPrice(event.target.value)}
@@ -73,19 +71,21 @@ function AddDish()
                     min={0}
                 />
                 <br/>
-                <select onChange = {(e) => setDishNature(e.target.value)}>
+                <select onChange = {(e) => setDishNature(e.target.value)} className = "classic nature">
                     <option hidden>Select Dish Nature</option>
                     <option value = "veg">Veg</option>
                     <option value = "non-veg">Non-veg</option>
                 </select>
                 <br/>
                 <input 
-                    placeholder = "Enter dish image"
+                className = "form-input"
+                    placeholder = "Enter dish image link"
                     value = {dishImage}
                     onChange = {(event) => setDishImage(event.target.value)}
                 />
                 <br/>
-                <textarea
+                <input
+                    className = "form-input"
                     placeholder="Enter description of dish"
                     value={dishDescription}
                     onChange = {(e) => setDishDescription(e.target.value)}
@@ -94,9 +94,8 @@ function AddDish()
                 <button
                 type = "button"
                 onClick = {onClickHandeler}
+                className = "add-dish-btn"
                 >Submit</button>
-            </fieldset>
-        </form>
     </div>
 }
 

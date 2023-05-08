@@ -29,13 +29,9 @@ function DeleteDish()
         })
     }
 
-    return <div>
-        <form>
-            <fieldset>
-                <legend>
-                    Delete Dish
-                </legend>
-                <select onChange = {(event) => setSelectedDishId(event.target.value)}>
+    return <div className = "delete-dish-container">
+                <h2>Delete Dish</h2>
+                <select onChange = {(event) => setSelectedDishId(event.target.value)} className = "classic">
                     <option hidden>Select a dish</option>
                     {
                         dishes.map(dish => <option value = {dish.dishId} key = {dish.dishId}>{dish.dishName}</option>)
@@ -43,10 +39,9 @@ function DeleteDish()
                 </select>
                 <br/>
                 <button type = "button"
+                className = "delete-dish-btn"
                 onClick = {onClickHandeler}
                 >Delete</button>
-            </fieldset>
-        </form>
     </div>
 }
 

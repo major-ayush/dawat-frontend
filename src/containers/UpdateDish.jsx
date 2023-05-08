@@ -46,12 +46,8 @@ function UpdateDish() {
         })
     }
 
-    return <div>
-        <form>
-            <fieldset>
-                <legend>
-                    Update Dish
-                </legend>
+    return <div className = "update-dish-container">
+                <h2>Update Dish</h2>
                 <select onChange={(event) => {
                     setSelectedDishId(event.target.value);
                     const dish = dishes.find(dish => dish.dishId == event.target.value);
@@ -60,7 +56,9 @@ function UpdateDish() {
                     setDishPrice(dish.dishPrice);
                     setDishImage(dish.dishImage);
                     setDishNature(dish.dishNature)
-                }}>
+                }}
+                className="classic"
+                >
                     <option hidden>Select a dish</option>
                     {
                         dishes.map(dish => <option value={dish.dishId} key={dish.dishId}>{dish.dishName}</option>)
@@ -71,12 +69,14 @@ function UpdateDish() {
                     selectedDishId !== null ?
                 <div>
                 <input
+                    className = "form-input"
                     placeholder="Enter Dish Name"
                     value={dishName}
                     onChange={(event) => setDishName(event.target.value)}
                 />
                 <br />
                 <input
+                    className = "form-input"
                     placeholder="Enter Dish Price"
                     value={dishPrice}
                     onChange={(event) => setDishPrice(event.target.value)}
@@ -86,23 +86,25 @@ function UpdateDish() {
                 <br />
                 {
                     dishNature === "veg" ?
-                        <select onChange={(e) => setDishNature(e.target.value)}>
+                        <select onChange={(e) => setDishNature(e.target.value)} className = "classic nature">
                             <option value="veg">Veg</option>
                             <option value="non-veg">Non-veg</option>
                         </select> :
-                        <select onChange={(e) => setDishNature(e.target.value)}>
+                        <select onChange={(e) => setDishNature(e.target.value)} className = "classic nature">
                             <option value="non-veg">Non-veg</option>
                             <option value="veg">Veg</option>
                         </select>
                 }
                 <br />
                 <input
+                    className = "form-input"
                     placeholder="Enter dish image"
                     value={dishImage}
                     onChange={(event) => setDishImage(event.target.value)}
                 />
                 <br />
-                <textarea
+                <input
+                    className = "form-input"
                     placeholder="Enter description of dish"
                     value={dishDescription}
                     onChange={(e) => setDishDescription(e.target.value)}
@@ -110,11 +112,10 @@ function UpdateDish() {
                 <br />
                 <button type="button"
                     onClick={onClickHandeler}
+                    className = "update-dish-btn"
                 >Update</button>
                 </div> : null
                 }
-            </fieldset>
-        </form>
     </div>
 }
 

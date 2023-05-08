@@ -24,11 +24,10 @@ function AddMenu()
         setMenuImageLink("");
         setMenuName("");
     }
-    return <div>
-        <form>
-            <fieldset>
-                <legend>Add Menu Details</legend>
+    return <div className = "add-menu-container">
+                <h2>Add Menu Details</h2>
                 <input
+                    className = "form-input"
                     placeholder="Enter Menu Name"
                     value = {menuName}
                     onChange = {
@@ -37,6 +36,7 @@ function AddMenu()
                 />
                 <br/>
                 <input
+                    className = "form-input"
                     placeholder="Enter Menu Image link"
                     value = {menuImageLink}
                     onChange = {
@@ -49,9 +49,8 @@ function AddMenu()
                     onClick = {
                         onClickHandeler
                     }
+                    className = "add-menu-btn"
                 >Submit</button>
-            </fieldset>
-        </form>
     </div>
 }
 

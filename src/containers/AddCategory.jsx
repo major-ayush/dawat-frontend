@@ -39,13 +39,9 @@ function AddCategory()
         }
     }
 
-    return <div>
-    <form>
-    <fieldset>
-    <legend>
-        Enter category
-    </legend>
-        <select onChange={(event) => {setSelectedMenuId(event.target.value); }} required>
+    return <div className = "add-category-container">
+        <h2>Add New Category</h2>
+        <select onChange={(event) => {setSelectedMenuId(event.target.value); }} className="classic add-category-select">
             <option hidden>select a menu</option>
             {
                 data.map((menu,index) => <option key = {index} value = {menu.menuId}>{menu.menuName}</option>)
@@ -53,12 +49,14 @@ function AddCategory()
         </select>
         <br/>
         <input 
+            className = "form-input"
             placeholder="Enter category name"
             value = {categoryName}
             onChange = {(event) => setCategoryName(event.target.value)}
         />
         <br/>
         <input
+            className = "form-input"
             placeholder="Enter category image"
             value = {categoryImage}
             onChange = {(event)=> setCategoryImage(event.target.value)}
@@ -67,12 +65,11 @@ function AddCategory()
         <button
             onClick={onClickHandeler}
             type = "button"
+            className="add-category-btn"
         >Submit</button>
         {
             hasError ? <p>Enter all fields</p> : null
         }
-        </fieldset>
-    </form>
     </div>
 }
 
